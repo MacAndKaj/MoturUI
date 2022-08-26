@@ -1,0 +1,74 @@
+cmake_minimum_required(VERSION 3.23)
+
+project(MotorUI VERSION 0.1 LANGUAGES CXX)
+set(BINARY_NAME MoturUIApp)
+set(APP_LIB_PREFIX ${BINARY_NAME}_LIB)
+
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_AUTOUIC_SEARCH_PATHS ${CMAKE_SOURCE_DIR}/forms)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+#set(AUTOGEN_BUILD_DIR "${CMAKE_SOURCE_DIR}/${BINARY_NAME}_autogen/include")
+
+set(MOTORUI_AUTOGEN_HEADERS ${AUTOGEN_BUILD_DIR})
+set(MOTORUI_HEADERS ${CMAKE_SOURCE_DIR}/inc)
+set(MOTORUI_RESOURCES ${CMAKE_SOURCE_DIR}/res/resources.qrc)
+
+message(STATUS "MOTORUI_HEADERS=${MOTORUI_HEADERS}")
+
+find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
+
+set(TS_FILES MoturUI_en_GB.ts)
+
+set(PROJECT_SOURCES
+        app/main.cpp
+        forms/MainWindow.ui
+)
+
+if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
+    qt6_wrap_ui(UI_HEADERS ${CMAKE_AUTOUIC_SEARCH_PATHS}/MainWindow.ui)
+    qt_add_executable(${BINARY_NAME}
+        MANUAL_FINALIZATION
+        ${PROJECT_SOURCES}
+        ${TS_FILES}
+        ${MOTORUI_RESOURCES}
+    )
+else()
+    add_executable(${BINARY_NAME}
+        ${PROJECT_SOURCES}
+    )
+endif()
+
+
+add_subdirectory(src)
+
+target_include_directories(${BINARY_NAME} PUBLIC
+    ${MOTORUI_AUTOGEN_HEADERS}
+    ${MOTORUI_HEADERS}
+    ${MOTORUI_FORMS_HEADERS}
+)
+
+target_link_libraries(${BINARY_NAME} PUBLIC
+    Qt${QT_VERSION_MAJOR}::Widgets
+    ${APP_LIB_PREFIX}_VIEW
+)
+
+
+set_target_properties(${BINARY_NAME} PROPERTIES
+    MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
+    MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
+    MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
+    MACOSX_BUNDLE TRUE
+    WIN32_EXECUTABLE TRUE
+)
+
+if(QT_VERSION_MAJOR EQUAL 6)
+    qt_finalize_executable(${BINARY_NAME})
+endif()
