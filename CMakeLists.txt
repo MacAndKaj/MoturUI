@@ -22,8 +22,8 @@ set(MOTORUI_RESOURCES ${CMAKE_SOURCE_DIR}/res/resources.qrc)
 
 message(STATUS "MOTORUI_HEADERS=${MOTORUI_HEADERS}")
 
-find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets Bluetooth)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Bluetooth )
 
 set(TS_FILES MoturUI_en_GB.ts)
 

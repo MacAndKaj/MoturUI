@@ -20,6 +20,6 @@ target_include_directories(${LIB_NAME} PUBLIC
     ${MOTORUI_HEADERS}
 )
 
-target_link_libraries(${LIB_NAME} PRIVATE
-    Qt${QT_VERSION_MAJOR}::Widgets
+target_link_libraries(${LIB_NAME}
+    PRIVATE Qt${QT_VERSION_MAJOR}::Widgets
 )
