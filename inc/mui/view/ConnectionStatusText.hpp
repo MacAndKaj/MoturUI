@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2022 MacAndKaj - All Rights Reserved
  */
-#ifndef VIEW_CONNECTIONSTATUSTEXT_HPP
-#define VIEW_CONNECTIONSTATUSTEXT_HPP
+#ifndef MUI_VIEW_CONNECTIONSTATUSTEXT_HPP
+#define MUI_VIEW_CONNECTIONSTATUSTEXT_HPP
 
 class QLabel;
 
-namespace view
+namespace mui::view
 {
 
 class ConnectionStatusText
@@ -23,6 +23,6 @@ private:
     QLabel& m_label;
 };
 
-} // namespace view
+} // namespace mui::view
 
-#endif // VIEW_CONNECTIONSTATUSTEXT_HPP
+#endif // MUI_VIEW_CONNECTIONSTATUSTEXT_HPP

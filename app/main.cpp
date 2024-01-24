@@ -1,19 +1,52 @@
 /*
  * Copyright (C) 2022 MacAndKaj - All Rights Reserved
  */
-#include <view/ViewManager.hpp>
+#include <mui/core/Core.hpp>
+#include <mui/interface/InterfaceManager.hpp>
+#include <mui/view/ViewManager.hpp>
 
 #include <QApplication>
 #include <QLocale>
 #include <QTranslator>
+#include <QDebug>
 
+#include <optional>
 #include <iostream>
+
+std::string find(const QStringList& args, const QString& o1, const std::optional<QString>& o2=std::nullopt)
+{
+    auto i = args.indexOf(o1);
+    if (i != -1)
+    {
+        return args.at(i+1).toStdString();
+    }
+    else if (not o2) 
+    {
+        return {};
+    }
+
+
+    i = args.indexOf(*o2);
+    if (i != -1)
+    {
+        return args.at(i+1).toStdString();
+    }
+
+    return {};
+}
+
+std::string parse_password(const QStringList& args)
+{
+    return find(args, "--password", "-p");
+}
 
 int main(int argc, char *argv[])
 {
     try
     {
         QApplication a(argc, argv);
+        QStringList program_arguments = a.arguments();
+        qDebug() << program_arguments;
 
         QTranslator translator;
         const QStringList uiLanguages = QLocale::system().uiLanguages();
@@ -24,7 +57,13 @@ int main(int argc, char *argv[])
                 break;
             }
         }
-        view::ViewManager manager;
+
+        std::string password = parse_password(program_arguments);
+
+        mui::interface::InterfaceManager interfaceManager;
+        mui::core::Core core(interfaceManager, password);
+        mui::view::ViewManager manager(interfaceManager);
+
         return a.exec();
     }
     catch (const std::exception& ex)

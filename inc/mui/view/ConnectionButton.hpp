@@ -1,16 +1,20 @@
 /*
  * Copyright (C) 2022 MacAndKaj - All Rights Reserved
  */
-#ifndef VIEW_CONNECTIONBUTTON_HPP
-#define VIEW_CONNECTIONBUTTON_HPP
+#ifndef MUI_VIEW_CONNECTIONBUTTON_HPP
+#define MUI_VIEW_CONNECTIONBUTTON_HPP
+
+#include <QObject>
 
 class QPushButton;
 
-namespace view
+namespace mui::view
 {
 
-class ConnectionButton
+class ConnectionButton : public QObject
 {
+    Q_OBJECT
+
 public:
     ConnectionButton() = delete;
     explicit ConnectionButton(QPushButton& button);
@@ -19,10 +23,13 @@ public:
     void setConnectText();
     void setDisconnectText();
 
+signals:
+    void connectButtonClicked();
+
 private:
     QPushButton& m_button;
 };
 
-} // namespace view
+} // namespace mui::view
 
-#endif // VIEW_CONNECTIONBUTTON_HPP
+#endif // MUI_VIEW_CONNECTIONBUTTON_HPP

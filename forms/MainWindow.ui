@@ -58,9 +58,28 @@
           </spacer>
          </item>
          <item>
-          <widget class="QPushButton" name="connectionButton">
+          <widget class="QPushButton" name="updateAccessPointsButton">
+           <property name="maximumSize">
+            <size>
+             <width>84</width>
+             <height>34</height>
+            </size>
+           </property>
            <property name="text">
-            <string>PushButton</string>
+            <string>Update</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="connectionButton">
+           <property name="maximumSize">
+            <size>
+             <width>84</width>
+             <height>34</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Connect</string>
            </property>
           </widget>
          </item>
@@ -80,6 +99,9 @@
          </item>
         </layout>
        </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="accessPointsComboBox"/>
       </item>
       <item>
        <widget class="QListWidget" name="listWidget"/>

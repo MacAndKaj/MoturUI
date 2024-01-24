@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2022 MacAndKaj - All Rights Reserved
  */
-#ifndef VIEW_MAINWINDOW_HPP
-#define VIEW_MAINWINDOW_HPP
+#ifndef MUI_VIEW_MAINWINDOW_HPP
+#define MUI_VIEW_MAINWINDOW_HPP
 
 #include <QMainWindow>
 
-namespace view
+namespace mui::view
 {
 
 class MainWindow : public QMainWindow
@@ -15,9 +15,9 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(QWidget *parent = nullptr);
-    virtual ~MainWindow();
+    virtual ~MainWindow() = default;
 };
 
-} // namespace view
+} // namespace mui::view
 
-#endif // VIEW_MAINWINDOW_HPP
+#endif // MUI_VIEW_MAINWINDOW_HPP

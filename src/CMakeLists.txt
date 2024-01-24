@@ -1,2 +1,1 @@
-add_subdirectory(interface)
-add_subdirectory(view)
+add_subdirectory(mui)

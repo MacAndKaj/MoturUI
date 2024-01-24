@@ -1,14 +1,14 @@
 /*
  * Copyright (C) 2022 MacAndKaj - All Rights Reserved
  */
-#ifndef VIEW_CONNECTIONSTATUSLED_HPP
-#define VIEW_CONNECTIONSTATUSLED_HPP
+#ifndef MUI_VIEW_CONNECTIONSTATUSLED_HPP
+#define MUI_VIEW_CONNECTIONSTATUSLED_HPP
 
 #include <QPixmap>
 
 class QLabel;
 
-namespace view
+namespace mui::view
 {
 
 class ConnectionStatusLed
@@ -30,6 +30,6 @@ private:
     std::string m_logPrefix;
 };
 
-} // namespace view
+} // namespace mui::view
 
-#endif // VIEW_CONNECTIONSTATUSLED_HPP
+#endif // MUI_VIEW_CONNECTIONSTATUSLED_HPP

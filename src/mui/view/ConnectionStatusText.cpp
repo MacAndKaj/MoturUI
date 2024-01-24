@@ -2,12 +2,12 @@
  * Copyright (C) 2022 MacAndKaj - All Rights Reserved
  */
 
-#include <view/ConnectionStatusText.hpp>
+#include <mui/view/ConnectionStatusText.hpp>
 
 #include <QString>
 #include <QLabel>
 
-namespace view
+namespace mui::view
 {
 
 static const QString disconnectedText = "Disconnected";
@@ -35,4 +35,4 @@ void ConnectionStatusText::setConnectingInProgress()
 }
 
 
-} // namespace view
+} // namespace mui::view

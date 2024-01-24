@@ -1,9 +1,9 @@
 /*
  * Copyright (C) 2022 MacAndKaj - All Rights Reserved
  */
-#include <view/MainWindow.hpp>
+#include <mui/view/MainWindow.hpp>
 
-namespace view
+namespace mui::view
 {
 
 MainWindow::MainWindow(QWidget *parent)
@@ -11,6 +11,6 @@ MainWindow::MainWindow(QWidget *parent)
 {
 }
 
-MainWindow::~MainWindow() = default;
 
-} // namespace view
+
+} // namespace mui::view

@@ -1,14 +1,14 @@
 /*
  * Copyright (C) 2022 MacAndKaj - All Rights Reserved
  */
-#include <view/ConnectionStatusLed.hpp>
+#include <mui/view/ConnectionStatusLed.hpp>
 
 #include <QLabel>
 
 #include <stdexcept>
 #include <tuple>
 
-namespace view
+namespace mui::view
 {
 static const QString s_connectedLedFilename(":/connected_led.png");
 static const QString s_disconnectedLedFilename(":/disconnected_led.png");
@@ -42,4 +42,4 @@ void ConnectionStatusLed::setImage(const QString &filename)
 
 
 
-} // namespace view
+} // namespace mui::view
