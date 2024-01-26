@@ -1,0 +1,21 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    container:
+      image: docker.io/stateoftheartio/qt6:6.6-gcc-aqt
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: cmake
+      run: cmake .
+    - name: make
+      run: make
